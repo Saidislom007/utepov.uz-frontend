@@ -1,0 +1,218 @@
+.book-reader-page {
+  min-height: 100vh;
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.reader-topbar {
+  height: 72px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 50%;
+  }
+
+  .back-btn {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #374151;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #f3f4f6;
+      color: #1677ff;
+    }
+  }
+
+  .topbar-empty {
+    width: 120px;
+  }
+}
+
+.reader-body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  overflow: auto;
+  min-height: calc(100vh - 200px);
+
+  .react-pdf__Document {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .react-pdf__Page {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    transition: all 0.3s ease;
+  }
+
+  canvas {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+  }
+}
+
+.reader-controls {
+  position: sticky;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid #e5e7eb;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  z-index: 10;
+
+  button {
+    border: none;
+    background: #fff;
+    color: #111827;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    border: 1px solid #d1d5db;
+    transition: all 0.2s ease;
+    min-width: 80px;
+
+    &:hover:not(:disabled) {
+      border-color: #1677ff;
+      color: #1677ff;
+      background: #f0f7ff;
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .page-info,
+  .zoom-info {
+    min-width: 70px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+  }
+
+  .page-info {
+    span:first-child {
+      color: #1677ff;
+    }
+  }
+}
+
+.reader-loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f4f6;
+  font-size: 18px;
+  color: #374151;
+}
+
+@media (max-width: 768px) {
+  .reader-topbar {
+    padding: 0 12px;
+
+    h2 {
+      font-size: 18px;
+      max-width: 60%;
+    }
+
+    .back-btn {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+
+    .topbar-empty {
+      display: none;
+    }
+  }
+
+  .reader-body {
+    padding: 12px;
+  }
+
+  .reader-controls {
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px;
+
+    button {
+      font-size: 14px;
+      padding: 8px 12px;
+      min-width: 70px;
+    }
+
+    .page-info,
+    .zoom-info {
+      font-size: 14px;
+      padding: 8px 12px;
+      min-width: 60px;
+    }
+  }
+}
+
+// Scrollbar styling (ixtiyoriy)
+.reader-body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.reader-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.reader-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.reader-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

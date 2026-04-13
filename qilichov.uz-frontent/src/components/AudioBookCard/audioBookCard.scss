@@ -1,0 +1,83 @@
+.audio-card {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #111827;
+  transition: 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+}
+
+.audio-card-image {
+  position: relative;
+  width: 200px;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f1f5f9;
+  margin-bottom: 12px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: 0.2s ease;
+    color: white;
+
+    svg {
+      width: 50px;
+      height: 50px;
+      background: #1677ff;
+      border-radius: 50%;
+      padding: 10px;
+    }
+  }
+}
+
+/* hoverda chiqadi */
+.audio-card:hover .play-overlay {
+  opacity: 1;
+}
+
+.audio-card-body {
+  padding: 0 6px;
+}
+
+.audio-author {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 4px;
+}
+
+.audio-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .audio-card-image {
+    height: 260px;
+  }
+
+  .audio-title {
+    font-size: 16px;
+  }
+}
